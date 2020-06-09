@@ -94,13 +94,37 @@ const Home = () => {
             console.log(err)
         })
     }
+
+    const deletePost = (postid) => {
+        fetch(`/deletepost/${postid}`,{
+            method:"delete",
+            headers:{
+                "Authorization": "" + localStorage.getItem("jwt")
+            }
+        }).then(res => res.json())
+        .then(result => {
+            console.log(result)
+            const newdata = data.filter(item => {
+                return item._id !== result._id
+            })
+            setData(newdata)
+        })
+    }
     return(
         <div className="home">
             {
                 data.map(item => {
                     return(
                         <div className="card home-card" key={item._id}>
-                            <h6>{item.postedBy.name}</h6>
+                            <h6>{item.postedBy.name} 
+                                {item.postedBy._id == state._id && 
+                                 <i className="material-icons" style={{float:"right"}}
+                                    onClick={() => deletePost(item._id)}>
+                                    delete
+                                 </i>
+                                }
+                                
+                            </h6>
                         <div className="card-image">
                             <img src={item.picture}/>
                         </div>
@@ -121,9 +145,9 @@ const Home = () => {
                                 item.comments.map(record => {
                                     return(
                                     <h6 key={record._id}>
-                                        <span style={{fontWeight:"500"}}>
+                                        <span style={{fontWeight:"bold"}}>
                                         {record.postedBy.name}
-                                        </span> 
+                                        </span><span>   </span>
                                         {record.text}
                                     </h6>
                                     )
