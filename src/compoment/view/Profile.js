@@ -23,7 +23,7 @@ const Profile = () => {
             }}>
                 <div>
                     <img style={{width:"160px", height:"160px", borderRadius:"80px"}}
-                    src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/90324588_2610390239100298_57370085785862144_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=Z2Cf8w5GSTMAX-Iqmey&_nc_ht=scontent.fvca1-1.fna&oh=fa9a12c87dab6ed01f9e0bdab206621f&oe=5EF5ED8D&dl=1"/>
+                    src={state?state.pic:"loading"}/>
                 </div>
                 <div>
                     <h4>

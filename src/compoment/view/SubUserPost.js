@@ -117,7 +117,7 @@ const Home = () => {
                 data.map(item => {
                     return(
                         <div className="card home-card" key={item._id}>
-                            <h7 styte={{margin:"10px", fontWeight:"bold"}}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile/"}>
+                            <h6 styte={{margin:"10px", fontWeight:"bold"}}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile/"}>
                                     {item.postedBy.name}
                                 </Link> 
                                 {item.postedBy._id == state._id && 
@@ -127,7 +127,7 @@ const Home = () => {
                                  </i>
                                 }
                                 
-                            </h7>
+                            </h6>
                         <div className="card-image">
                             <img src={item.picture}/>
                         </div>
