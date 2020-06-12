@@ -7,6 +7,8 @@ import Login from './compoment/view/Login';
 import Profile from './compoment/view/Profile';
 import Register from './compoment/view/Register';
 import CreatePost from './compoment/view/CreatePost';
+import UserProfile from './compoment/view/UserProfile';
+import SubUserPost from './compoment/view/SubUserPost';
 import {reducer, initialState} from './reducer/userReducer';
 
 export const UserContext = createContext()
@@ -35,11 +37,17 @@ const Routing = () => {
       <Route path="/register">
         <Register/>
       </Route>
-      <Route path="/profile">
+      <Route exact path="/profile">
         <Profile/>
       </Route>
       <Route path="/create">
         <CreatePost/>
+      </Route>
+      <Route path="/profile/:userid">
+        <UserProfile/>
+      </Route>
+      <Route path="/myfollowingpost">
+        <SubUserPost/>
       </Route>
     </Switch>
   )

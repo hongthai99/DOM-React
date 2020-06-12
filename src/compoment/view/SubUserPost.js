@@ -6,7 +6,7 @@ const Home = () => {
     const [data, setData] = useState([])
     const {state, dispatch} = useContext(UserContext)
     useEffect(()=>{
-        fetch('/newsfeed',{
+        fetch('/subnewsfeed',{
             headers:{
                 "Authorization": "" + localStorage.getItem("jwt")
             }
@@ -117,7 +117,7 @@ const Home = () => {
                 data.map(item => {
                     return(
                         <div className="card home-card" key={item._id}>
-                            <h7 style={{margin:"10px", fontWeight:"bold"}}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile/"}>
+                            <h7 styte={{margin:"10px", fontWeight:"bold"}}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile/"}>
                                     {item.postedBy.name}
                                 </Link> 
                                 {item.postedBy._id == state._id && 
@@ -135,7 +135,7 @@ const Home = () => {
                             {/* <i className="material-icons" style={{color:"red"}}>favorite</i> */}
                             {item.likes.includes(state._id)
                                ? 
-                               <i className="material-icons " style={{color:"red"}}
+                               <i className="material-icons" style={{color:"red"}}
                                    onClick={()=>{unlikePost(item._id)}}>favorite</i>
                                : 
                                <i className="material-icons" style={{color:"red"}}
